@@ -5,7 +5,26 @@ local player = Players.LocalPlayer
 local gui = player:WaitForChild("PlayerGui")
 
 -- Configurations (You can modify these)
-local unitName = "Eclipse Sorcerer" -- ชื่อยูนิตที่ต้องการ reroll
+local -- ดึงชื่อยูนิตอัตโนมัติจาก GUI
+local player = game.Players.LocalPlayer
+local gui = player:WaitForChild("PlayerGui")
+local scrollingFrame = gui.UnitsIndex.Main.Base.Space.ScrollingFrame
+
+local selectedName = "ไม่พบยูนิต"
+
+for _, unitFrame in pairs(scrollingFrame:GetChildren()) do
+    local info = unitFrame:FindFirstChild("Frame") and unitFrame.Frame:FindFirstChild("UnitFrame")
+    if info and info:FindFirstChild("Info") and info.Info:FindFirstChild("Names") then
+        local label = info.Info.Names
+        if label:IsA("TextLabel") then
+            selectedName = label.Text
+            break
+        end
+    end
+end
+
+-- ใช้ selectedName ในคำสั่ง reroll แทนชื่อยูนิตที่กรอก
+print("กำลังสุ่มยูนิต:", selectedName)
 local targetTrait = "Sovereign" -- Trait ที่ต้องการให้หยุด
 local rerollType = "Main" -- "Main" หรือ "Sub"
 local rerollRemote = ReplicatedStorage.Remotes.RerollTrait
