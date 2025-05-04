@@ -5,7 +5,7 @@ local player = Players.LocalPlayer
 local gui = player:WaitForChild("PlayerGui")
 
 -- Configurations (You can modify these)
-local unitName = "Green Tornado" -- ชื่อยูนิตที่ต้องการ reroll
+local unitName = "Eclipse Sorcerer" -- ชื่อยูนิตที่ต้องการ reroll
 local targetTrait = "Sovereign" -- Trait ที่ต้องการให้หยุด
 local rerollType = "Main" -- "Main" หรือ "Sub"
 local rerollRemote = ReplicatedStorage.Remotes.RerollTrait
